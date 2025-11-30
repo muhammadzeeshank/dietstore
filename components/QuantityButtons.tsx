@@ -1,8 +1,4 @@
 import React from "react";
-import { Button } from "./ui/button";
-import { HiMinus, HiPlus } from "react-icons/hi2";
-import toast from "react-hot-toast";
-import { twMerge } from "tailwind-merge";
 import useCartStore from "@/store";
 import { Product } from "@/sanity.types";
 import { Minus, Plus } from "lucide-react";
@@ -13,43 +9,11 @@ interface Props {
   borderStyle?: string;
 }
 
-const QuantityButtons = ({ product, className, borderStyle }: Props) => {
+const QuantityButtons = ({ product }: Props) => {
   const { addItem, removeItem, getItemCount } = useCartStore();
   const itemCount = getItemCount(product?._id);
   const isOutOfStock = product?.stock === 0;
   return (
-    // <div
-    //   className={twMerge(
-    //     "flex items-center gap-1 pb-1 text-base",
-    //     borderStyle,
-    //     className
-    //   )}
-    // >
-    //   <Button
-    //     variant="outline"
-    //     size="icon"
-    //     className="w-6 h-6 cursor-pointer"
-    //     onClick={handleRemoveProduct}
-    //     disabled={itemCount === 0 || isOutOfStock}
-    //   >
-    //     <HiMinus />
-    //   </Button>
-    //   <span className="font-semibold w-8 text-center text-foreground">
-    //     {itemCount}
-    //   </span>
-    //   <Button
-    //     variant="outline"
-    //     size="icon"
-    //     className="w-6 h-6 cursor-pointer"
-    //     onClick={() => {
-    //       addItem(product);
-    //       toast.success("Quantity increased successfully!");
-    //     }}
-    //     disabled={isOutOfStock}
-    //   >
-    //     <HiPlus />
-    //   </Button>
-    // </div>
     <div className="flex items-center gap-3">
       <button
         onClick={() => removeItem(product?._id)}

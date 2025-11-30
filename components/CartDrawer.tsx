@@ -84,7 +84,7 @@ const CartDrawer = () => {
                           <Trash2 size={18} />
                         </button>
                       </div>
-                      <p className="text-brand-gold font-bold mb-3">${item.product.price.toFixed(2)}</p>
+                      <p className="text-brand-gold font-bold mb-3">PKR{item.product.price.toFixed(2)}</p>
                       
                       <QuantityButtons product={item.product} />
                     </div>
@@ -98,7 +98,7 @@ const CartDrawer = () => {
             <div className="p-6 bg-white dark:bg-neutral-900 border-t border-gray-200 dark:border-neutral-800">
               <div className="flex justify-between items-center mb-4">
                 <span className="text-gray-600 dark:text-gray-400">Subtotal</span>
-                <span className="text-2xl font-bold text-brand-green dark:text-brand-gold">${subtotal.toFixed(2)}</span>
+                <span className="text-2xl font-bold text-brand-green dark:text-brand-gold">PKR{subtotal.toFixed(2)}</span>
               </div>
               <p className="text-xs text-gray-400 dark:text-gray-500 mb-6 text-center">Shipping & taxes calculated at checkout</p>
               <button 
