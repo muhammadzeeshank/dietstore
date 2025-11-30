@@ -9,6 +9,19 @@ export interface CartItem {
 
 interface CartState {
   items: CartItem[];
+
+  // Cart UI
+  isCartOpen: boolean;
+  setIsCartOpen: (value: boolean) => void;
+
+  isWishlistOpen: boolean;
+  setIsWishlistOpen: (value: boolean) => void;
+
+  // Wishlist
+  wishlistItems: Product[];
+  addToWishlist: (product: Product) => void;
+  removeFromWishlist: (productId: string) => void;
+
   addItem: (product: Product) => void;
   removeItem: (productId: string) => void;
   deleteCartProduct: (productId: string) => void;
@@ -31,6 +44,33 @@ const useCartStore = create<CartState>()(
   persist(
     (set, get) => ({
       items: [],
+
+      // UI State
+      isCartOpen: false,
+      setIsCartOpen: (value) => set({ isCartOpen: value }),
+
+      isWishlistOpen: false,
+      setIsWishlistOpen: (value) => set({ isCartOpen: value }),
+
+      // Wishlist
+      wishlistItems: [],
+      addToWishlist: (product) =>
+        set((state) => {
+          const exists = state.wishlistItems.some(
+            (p) => p._id === product._id
+          );
+          if (exists) return { wishlistItems: state.wishlistItems };
+          return { wishlistItems: [...state.wishlistItems, product] };
+        }),
+
+      removeFromWishlist: (productId) =>
+        set((state) => ({
+          wishlistItems: state.wishlistItems.filter(
+            (p) => p._id !== productId
+          )
+        })),
+
+      // Cart logic
       addItem: (product) =>
         set((state) => {
           const existingItem = state.items.find(

@@ -139,3 +139,26 @@ export const getMyOrders = async (userId: string) => {
     return [];
   }
 };
+
+export const getHeroSection = async () => {
+  const HERO_SECTION_QUERY = defineQuery(`*[_type == "heroSection"][0]{
+      tagLine,
+      title,
+      subtitle,
+      description,
+      buttonText1,
+      buttonText2,
+      heroImageLarge,
+      heroImageSmall
+    }`);
+
+    try {
+    const heroData = await sanityFetch({
+      query: HERO_SECTION_QUERY,
+    });
+    return heroData?.data || [];
+  } catch (error) {
+    console.error("Error fetching orders:", error);
+    return [];
+  }
+};

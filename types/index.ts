@@ -16,3 +16,4 @@ export interface ImageData {
   url: string;
   key: string;
 }
+export type ViewType = 'home' | 'products' | 'product-detail' | 'about' | 'checkout' | 'contact' | 'return-policy' | 'privacy-policy' | 'terms' | 'track-order';

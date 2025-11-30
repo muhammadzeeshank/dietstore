@@ -73,6 +73,13 @@
   --shadow-opacity: var(--shadow-opacity);
   --color-shadow-color: var(--shadow-color);
   --color-destructive-foreground: var(--destructive-foreground);
+
+  --color-brand-gold: #D4AF37;
+  --color-brand-gold-light: #F4E5BC;
+  --color-brand-green: #2C4A3B;
+  --color-brand-green-light: #4A6F58;
+  --color-brand-cream: #FDFBF7;
+  --color-brand-dark: #1A1A1A;
 }
 
 :root {

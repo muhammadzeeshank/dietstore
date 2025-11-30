@@ -3,11 +3,12 @@ import { ThemeProvider } from "@/providers/theme-provider";
 import Header from "@/components/Header";
 import { Toaster } from "react-hot-toast";
 import Footer from "@/components/Footer";
+import CartDrawer from "@/components/CartDrawer";
 
 export const metadata: Metadata = {
-  title: "Desi Home Store",
+  title: "Diet Store",
   description:
-    "Discover the best organic oil for cooking at Desi Home Store — your trusted source for 100% natural and healthy cooking oil. Sourced from pure ingredients, our oils support a wholesome lifestyle. Shop now for the best and healthiest cooking oil in Pakistan.",
+    "Discover the best organic oil for cooking at Diet Store — your trusted source for 100% natural and healthy cooking oil. Sourced from pure ingredients, our oils support a wholesome lifestyle. Shop now for the best and healthiest cooking oil in Pakistan.",
 };
 
 export default function RootLayout({
@@ -22,7 +23,10 @@ export default function RootLayout({
       enableSystem
       disableTransitionOnChange
     >
-      <Header />
+      <Header 
+        wishlistCount={0}
+      />
+      <CartDrawer />
       <main className="flex-grow flex flex-col">{children}</main>
       <Toaster
         position="bottom-right"
